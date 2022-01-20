@@ -1,0 +1,22 @@
+{
+    "quiz" : {
+        "Age" : {
+            "de_4_à_9_ans" : {
+                "Thème" : {
+                    "Nature" : {
+                        "Question1" : "Quel animal a des rayures noires?"
+                    },
+                    "jeux_vidéos" : {
+                        "Question1" : "BLA"
+                    },
+                    "Films" : {
+                        "Question1" : "BLABLA"
+                    }
+                }
+            }
+        }
+    },
+    "Réponses" : {
+        "Question1" : ["Zèbre", "Vache", "Tigre"]
+    }
+}
