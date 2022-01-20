@@ -1,7 +1,6 @@
 {
   "name": "ap_quiz",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,5 +9,15 @@
   "license": "ISC",
   "dependencies": {
     "typescript": "^4.5.4"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NorlaXx/ColoQuiz.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NorlaXx/ColoQuiz/issues"
+  },
+  "homepage": "https://github.com/NorlaXx/ColoQuiz#readme",
+  "description": ""
 }

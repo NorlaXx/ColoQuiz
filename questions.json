@@ -4,19 +4,32 @@
             "de_4_à_9_ans" : {
                 "Thème" : {
                     "Nature" : {
-                        "Question1" : "Quel animal a des rayures noires?"
+                        "Questions" : ["Quel animal a des rayures noires ?", "Où vit le Panda ?", "Qu'est ce qui est mauvais pour la planète ?", "Quel est l'animal le plus lourd ?", "Dans quel pays il y a beaucoup de sable ?"]
                     },
                     "jeux_vidéos" : {
-                        "Question1" : "BLA"
+                        "Question1" : ["Quand a été créé Minecraft ?", "Quelle est la console qui n'existe pas ?", "Comment s'appelle le frère de Mario ?", "Quel type d'animal est Sonic", "Comment avoir des émeraudes sur Minecraft sans les miner ?"]
                     },
                     "Films" : {
-                        "Question1" : "BLABLA"
+                        "Question1" : ["De quelle couleur est Shrek ?", "Quel type de voiture est Martin dans Cars ?", "Comboien existe t-il de films Madagascar ?", "Comment s'appellent les personnages jaunes dans Moi Moche et méchant ?", "Quel est le 1er pokemon de Sacha ?"]
+                    }
+                }
+            },
+            "de_10_à_16_ans" : {
+                "Thème" : {
+                    "Nature" : {
+                        "Questions" : [""]
+                    },
+                    "jeux_vidéos" : {
+                        "Question1" : [""]
+                    },
+                    "Films" : {
+                        "Question1" : [""]
                     }
                 }
             }
         }
     },
     "Réponses" : {
-        "Question1" : ["Zèbre", "Vache", "Tigre"]
+        "Nature" : [""]
     }
 }
