@@ -1,5 +1,9 @@
 "use strict";
-exports.__esModule = true;
-var questions_json_1 = require("./questions.json");
-console.log(questions_json_1["default"].quiz.Age.de_4_à_9_ans.Thème.Nature.Question1);
-console.log(questions_json_1["default"].Réponses.Question1[0]);
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const questions_json_1 = __importDefault(require("./questions.json"));
+console.log(questions_json_1.default.Thème.Nature[0].Question);
+console.log(questions_json_1.default.Thème.JeuxVidéos[1].GoodAwnser);
+console.log(questions_json_1.default.Thème.Films[1].Reponses[1]);

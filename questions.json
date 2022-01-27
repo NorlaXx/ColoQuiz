@@ -1,35 +1,40 @@
 {
-    "quiz" : {
-        "Age" : {
-            "de_4_à_9_ans" : {
-                "Thème" : {
-                    "Nature" : {
-                        "Questions" : ["Quel animal a des rayures noires ?", "Où vit le Panda ?", "Qu'est ce qui est mauvais pour la planète ?", "Quel est l'animal le plus lourd ?", "Dans quel pays il y a beaucoup de sable ?"]
-                    },
-                    "jeux_vidéos" : {
-                        "Question1" : ["Quand a été créé Minecraft ?", "Quelle est la console qui n'existe pas ?", "Comment s'appelle le frère de Mario ?", "Quel type d'animal est Sonic", "Comment avoir des émeraudes sur Minecraft sans les miner ?"]
-                    },
-                    "Films" : {
-                        "Question1" : ["De quelle couleur est Shrek ?", "Quel type de voiture est Martin dans Cars ?", "Comboien existe t-il de films Madagascar ?", "Comment s'appellent les personnages jaunes dans Moi Moche et méchant ?", "Quel est le 1er pokemon de Sacha ?"]
-                    }
-                }
+    "Thème" : {
+        "Nature" : [
+            {
+                "Question" : "Quel animal a dees rayures noires",
+                "Reponses" : ["Chien", "Zèbre", "Châmeau", "Souris"],
+                "GoodAwnser" : "Zèbre"
             },
-            "de_10_à_16_ans" : {
-                "Thème" : {
-                    "Nature" : {
-                        "Questions" : [""]
-                    },
-                    "jeux_vidéos" : {
-                        "Question1" : [""]
-                    },
-                    "Films" : {
-                        "Question1" : [""]
-                    }
-                }
+            {
+                "Question" : "Où vit le Panda ?",
+                "Reponses" : ["France", "Japon", "Chine", "Australie"],
+                "GoodAwnser" : "Chine"
             }
-        }
-    },
-    "Réponses" : {
-        "Nature" : [""]
+        ],
+        "JeuxVidéos" : [
+            {
+                "Question" : "Quand a été créé Minecraft ?",
+                "Reponses" : [2009, 2008, 2007, 2010],
+                "GoodAwnser" : 2009
+            },
+            {
+                "Question" : "Comment s'appelle le frère de Mario ?",
+                "Reponses" : ["Luigi", "Bowser", "Wario", "Waluigi"],
+                "GoodAwnser" : "Luigi"
+            }
+        ],
+        "Films" : [
+            {
+                "Question" : "De quelle couleur est Shrek ?",
+                "Reponses" : ["Vert", "Rouge", "Jaune", "Bleu"],
+                "GoodAwnser" : "Vert"
+            },
+            {
+                "Question" : "Quel type de voiture est Martin dans Cars ?",
+                "Reponses" : ["Course", "Dépanneuse", "Tank", "Scooter"],
+                "GoodAwnser" : "Dépanneuse"
+            }
+        ]
     }
 }
