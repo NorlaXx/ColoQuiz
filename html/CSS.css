@@ -1,0 +1,122 @@
+body {
+	background: url(fond.jpg) no-repeat center fixed;
+	background-size: cover;
+}
+
+.site {
+	background-color: rgba(1, 1, 1, 0.5);
+	margin-left: 500px;
+	margin-right: 500px;
+
+}
+
+h1 {
+	font-size: 125px;
+	text-align: center;
+	color: #2db374;
+}
+
+h2 {
+	font-size: 75px;
+	text-align: center;
+	color: #2db374;
+}
+
+img {
+	border-radius: 40px;
+}
+
+.liens a{
+	text-decoration: none;
+}
+
+.liens2 a{
+	text-decoration: none;
+}
+/*début du programme pour glissière d'image*/
+
+/*définition des images*/
+
+@keyframes fondu{
+	0%{background-image: url("img/1.jpg");}
+	33.33%{background-image: url("img/2.jpg");}
+	66.67%{background-image: url("img/3.jpg");}
+	100%{background-image: url("img/1.jpg");}
+}
+
+/*image cliquable*/
+
+.Nature {
+	position: relative;
+	text-align: center;
+	margin-right: 75px;
+}
+
+.JeuxVidéo {
+	position: relative;
+	text-align: center;
+}
+
+.Film{
+	position: relative;
+	text-align: center;
+	margin-top: 75px;
+}
+
+/*Texte des images*/
+
+.texte_centrer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 120px;
+}
+
+/*répartition des blocs*/
+
+.liens {
+  margin-top: 50px;
+  display: flex;
+ align-items: center;
+ justify-content: center;
+}
+
+.liens2 {
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+}
+
+/*définirion du cadre à image*/
+
+.d1 {
+	width: 1000px;
+	height: 666px;
+	margin: 50px auto;
+	box-shadow: 0px 15px 10px -5px #777;
+	background-color: #EDEDED;
+	background-size: contain;
+	animation: fondu 7s ease-in-out infinite both; /*7s trop rapide, 8s trop lent :/ */
+}
+
+
+.conteneur {
+	max-width: 500px;
+	margin: 50px ;
+}
+
+/* Début Css du choix de l'âge */
+
+.Enfant {
+  position: relative;
+	text-align: center;
+	margin-right: 75px;
+}
+
+.Ado {
+	position: relative;
+  text-align: center;
+}
