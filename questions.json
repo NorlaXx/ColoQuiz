@@ -1,40 +1,41 @@
 {
-    "Thème" : {
-        "Nature" : [
-            {
-                "Question" : "Quel animal a dees rayures noires",
-                "Reponses" : ["Chien", "Zèbre", "Châmeau", "Souris"],
-                "GoodAwnser" : "Zèbre"
-            },
-            {
-                "Question" : "Où vit le Panda ?",
-                "Reponses" : ["France", "Japon", "Chine", "Australie"],
-                "GoodAwnser" : "Chine"
-            }
-        ],
-        "JeuxVidéos" : [
-            {
-                "Question" : "Quand a été créé Minecraft ?",
-                "Reponses" : [2009, 2008, 2007, 2010],
-                "GoodAwnser" : 2009
-            },
-            {
-                "Question" : "Comment s'appelle le frère de Mario ?",
-                "Reponses" : ["Luigi", "Bowser", "Wario", "Waluigi"],
-                "GoodAwnser" : "Luigi"
-            }
-        ],
-        "Films" : [
-            {
-                "Question" : "De quelle couleur est Shrek ?",
-                "Reponses" : ["Vert", "Rouge", "Jaune", "Bleu"],
-                "GoodAwnser" : "Vert"
-            },
-            {
-                "Question" : "Quel type de voiture est Martin dans Cars ?",
-                "Reponses" : ["Course", "Dépanneuse", "Tank", "Scooter"],
-                "GoodAwnser" : "Dépanneuse"
-            }
-        ]
-    }
+    "Nature" :
+    [
+        {
+            "Question" : "Quel animal a dees rayures noires",
+            "Reponses" : ["Chien", "Zèbre", "Châmeau", "Souris"],
+            "GoodAwnser" : "Zèbre"
+        },
+        {
+            "Question" : "Où vit le Panda ?",
+            "Reponses" : ["France", "Japon", "Chine", "Australie"],
+            "GoodAwnser" : "Chine"
+        }
+    ],
+    "JeuxVidéos" : 
+    [
+        {
+            "Question" : "Quand a été créé Minecraft ?",
+            "Reponses" : [2009, 2008, 2007, 2010],
+            "GoodAwnser" : 2009
+        },
+        {
+            "Question" : "Comment s'appelle le frère de Mario ?",
+            "Reponses" : ["Luigi", "Bowser", "Wario", "Waluigi"],
+            "GoodAwnser" : "Luigi"
+        }
+    ],
+    "Films" : 
+    [
+        {
+            "Question" : "De quelle couleur est Shrek ?",
+            "Reponses" : ["Vert", "Rouge", "Jaune", "Bleu"],
+            "GoodAwnser" : "Vert"
+        },
+        {
+            "Question" : "Quel type de voiture est Martin dans Cars ?",
+            "Reponses" : ["Course", "Dépanneuse", "Tank", "Scooter"],
+            "GoodAwnser" : "Dépanneuse"
+        }
+    ]
 }
