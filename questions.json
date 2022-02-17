@@ -33,7 +33,7 @@
             "GoodAwnser" : "Vert"
         },
         {
-            "Question" : "Quel type de voiture est Martin dans Cars ?",
+            "Question" : "Quel type de véhicule est Martin dans Cars ?",
             "Reponses" : ["Course", "Dépanneuse", "Tank", "Scooter"],
             "GoodAwnser" : "Dépanneuse"
         }
