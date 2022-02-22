@@ -17,13 +17,15 @@ var NbQuestionsJeux:number = questions.JeuxVidéos.length
 // Ajout des questions dans un tableau et des réponses dans un tableau
 var QuestionsFilms:string[] = []
 var Reponses:any[] = []
+var GoodAwnser:string[] = []
 // Ajout de tableaux dans le tableaux Reponses
 for(let i = 0; i < NbQuestionsFilms; i++) {
     Reponses.push([])
 }
-// Ajout des questions
+// Ajout des questions et de la bonne réponse
 for(let i = 0; i < NbQuestionsFilms; i++) {
     QuestionsFilms.push(questions.Films[i].Question)
+    GoodAwnser.push(questions.Films[i].GoodAwnser)
 }
 // Ajout des reponses
 for(let i = 0; i < NbQuestionsFilms; i++) {
@@ -85,10 +87,24 @@ function ArrayEmpty() {
     }
 }
 
+var score:number = 0
+
+// Fonction vérifiant si la réponse est bonne
+function verify(reponse:any, index:number) {
+    if(reponse == GoodAwnser[index]) {
+        alert("Bonne réponse")
+        score++
+    }
+    else{
+        alert("Mauvaise Réponse")
+    }
+}
+
 // Active la fonction AffichageAleatoire() et la fonction ArrayEmpty() lors du click sur le bouton Valider
 submit.onclick = function() {
     AffichageAleatoire()
     ArrayEmpty()
+    verify(this.value, 0)
 }
 
 // Affiche aléatoirement la première question
