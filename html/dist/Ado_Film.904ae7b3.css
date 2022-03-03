@@ -120,4 +120,25 @@ img {
 	position: relative;
   text-align: center;
 }
+
+/* Les boutons des différentes réponses */
+
+#Question{
+	padding: 20px;
+	background-color: #2db374;
+}
+
+.reponse{
+	margin-top: 10px;
+	padding: 20px;
+	background-color: #2db374;
+}
+
+.GoodAnswer {
+	background-color: #0d7c03;
+}
+
+.BadAnswer {
+	background-color: rgb(255, 0, 0);
+}
 /*# sourceMappingURL=Ado_Film.904ae7b3.css.map */

@@ -1,12 +1,8 @@
 import { convertToObject } from "typescript"
 import questions from "./questions.json"
 
-// console.log(questions.Thème.Nature[0].Question)
-// console.log(questions.Thème.JeuxVidéos[1].GoodAwnser)
-// console.log(questions.Thème.Films[1].Reponses[1])
-
-// Variable du bouton submit
-const submit:any = document.getElementById("submit") as HTMLElement
+// Variable pour le score définie à 0
+var score:number = 0
 
 // Nombre de questions de chaque thèmes
 var NbQuestionsFilms:number = questions.Films.length
@@ -14,98 +10,145 @@ console.log(NbQuestionsFilms)
 var NbQuestionsNature:number = questions.Nature.length
 var NbQuestionsJeux:number = questions.JeuxVidéos.length
 
+// Variable du score définit à 0
+var score:number = 0
+
+// Le nombre aléatoire mit dans une variable
+var NombreAleatoire = NbAleatoire()
+
 // Ajout des questions dans un tableau et des réponses dans un tableau
 var QuestionsFilms:string[] = []
 var Reponses:any[] = []
 var GoodAwnser:string[] = []
 // Ajout de tableaux dans le tableaux Reponses
-for(let i = 0; i < NbQuestionsFilms; i++) {
+for(let i:number = 0; i < NbQuestionsFilms; i++) {
     Reponses.push([])
 }
 // Ajout des questions et de la bonne réponse
-for(let i = 0; i < NbQuestionsFilms; i++) {
+for(let i:number = 0; i < NbQuestionsFilms; i++) {
     QuestionsFilms.push(questions.Films[i].Question)
     GoodAwnser.push(questions.Films[i].GoodAwnser)
 }
 // Ajout des reponses
-for(let i = 0; i < NbQuestionsFilms; i++) {
+for(let i:number = 0; i < NbQuestionsFilms; i++) {
     for(let j = 0; j < 4; j++) {
         Reponses[i].push(questions.Films[i].Reponses[j])
     }
 }
-console.log(QuestionsFilms)
+console.log("les questions sont" + QuestionsFilms)
 console.log(Reponses)
 
-// tirage aléatoire de n questions
+let Quiz:any = document.getElementById("Quiz")
 
-function AffichageAleatoire() {
+// Création du quiz HTML
+    
+// Création de la variable de la question
+let question:HTMLElement = document.createElement("div")
+question.id = "Question"
+// Création des variables de la question et des réponses
+Quiz.appendChild(question)
 
-    // Création  d'un tableau pour les questions déjà apparues
-    var QuestionsApparues:string[] = []
+AffichageQuestion(question, NombreAleatoire)
 
-    // Nombre aléatoire
-    var NbAleatoire:number = Math.floor(Math.random() * NbQuestionsFilms)
-    console.log(NbAleatoire)
+for(let i:number = 0; i < 4; i++){  // Magic number à effacer pour l'itération 4
+    var reponse:any = document.createElement("div")
+    reponse.classList.add("reponse")
+    reponse.value = AffichageReponse(reponse, NombreAleatoire, i)
+    reponse.id = "reponse" + i // output ==> reponse0 ou reponse1 ou reponse2 ou reponse3
+    
+    Quiz.appendChild(reponse)
+    
+    AffichageReponse(reponse, NombreAleatoire, i)
+    
+    reponse.addEventListener("click", function(event:any){
 
-    // Affichage de la question avec ses réponses
-    let Question:any = document.getElementById("Question") as HTMLElement
-    Question.innerHTML = QuestionsFilms[NbAleatoire]
+        if(Reponses[NombreAleatoire][i] == GoodAwnser[NombreAleatoire]) {
+            reponse.classList.add("GoodAnswer")
+        }else{
+            reponse.classList.add("BadAnswer")
+        }
 
-    let Réponse1:any = document.getElementById("Réponse1") as HTMLElement
-    Réponse1.innerHTML = Reponses[NbAleatoire][0]
+    })
 
-    let Réponse2:any = document.getElementById("Réponse2") as HTMLElement
-    Réponse2.innerHTML = Reponses[NbAleatoire][1]
-
-    let Réponse3:any = document.getElementById("Réponse3") as HTMLElement
-    Réponse3.innerHTML = Reponses[NbAleatoire][2]
-
-    let Réponse4:any = document.getElementById("Réponse4") as HTMLElement
-    Réponse4.innerHTML = Reponses[NbAleatoire][3]
-
-    // Ajout des questions déjà apparues dans le tableau prévu à cet effet
-    QuestionsApparues.push(questions.Films[NbAleatoire].Question)
-    console.log(QuestionsApparues)
-
-    // Supprime les questions étant déjà apparues du tableau des questions
-    QuestionsFilms.splice(NbAleatoire, 1)
-    console.log(QuestionsFilms)
-
-    // Supprime les réponses déjà apparues du tableaux des reponses
-    Reponses.splice(NbAleatoire, 1)
+    
 }
 
-// Fonction vérifiant si il y a envore des éléments dans le tableau des questions
-function ArrayEmpty() {
-    if(QuestionsFilms.length == 0) {
-        let quizEnd:any = document.getElementById("QuizEnd") as HTMLElement
-        quizEnd.innerHTML = "C'est la fin du quiz, RETOUR"
-        quizEnd.href = "http://localhost:1234"
+// Création du bouton de validation
+const submit = document.createElement("button")
+submit.id = "submit"
+submit.innerHTML = "validé"
+
+Quiz.appendChild(submit)
+
+// Fonction générant un nombre aléatoire
+function NbAleatoire() {
+    if(NbQuestionsFilms > 0) {
+        var NbAleatoire:number = Math.floor(Math.random()*NbQuestionsFilms)
+    } else{
+        NbAleatoire = -1
     }
-    else {
-        return
+
+    return NbAleatoire
+}
+
+// Affichage des Questions
+function AffichageQuestion(question:any, NombreAleatoire:any) {
+    if(NombreAleatoire >= 0) {
+        question.innerHTML = QuestionsFilms[NombreAleatoire]
+    } else{
+        question.innerHTML = "Il n'y a plus de question"
     }
 }
 
-var score:number = 0
+// Affichage des Réponses
+function AffichageReponse(reponse:any, NombreAleatoire:any, index:number) {
 
-// Fonction vérifiant si la réponse est bonne
-function verify(reponse:any, index:number) {
-    if(reponse == GoodAwnser[index]) {
-        alert("Bonne réponse")
-        score++
+    console.log(NombreAleatoire)
+
+    if(NombreAleatoire >= 0) {
+            reponse.innerHTML = Reponses[NombreAleatoire][index]
+
+        // Affichage des Questions ainsi que des réponses (aléatoirement)
+        
     }
     else{
-        alert("Mauvaise Réponse")
+        reponse.innerHTML = "Il n'y a plus de reponses"
     }
+        // Suppression de la Quesiton apparue ainsi que des réponses
+        
+        // Décrémenter NbAleatoire de 1 car Une question a été supprimée
 }
+
+// Fonctioon supprimant la question qui est apparue
+function DelQuestion() {
+    QuestionsFilms.splice(NombreAleatoire, 1)
+    Reponses.splice(NombreAleatoire, 1)
+    NbQuestionsFilms -= 1
+    console.log(QuestionsFilms)
+}
+
+// Fonction du score
+// function Score(valeur:any) {
+//     if(questions.Films[AffichageAleatoire()] == valeur) {
+//         alert("bravo")
+//     } else{
+//         alert("Faux")
+//     }
+// }
+
 
 // Active la fonction AffichageAleatoire() et la fonction ArrayEmpty() lors du click sur le bouton Valider
 submit.onclick = function() {
-    AffichageAleatoire()
-    ArrayEmpty()
-    verify(this.value, 0)
+    // Appelle la fonction supprimant la question déjà apparue
+    DelQuestion()
+    // Redéfini les nombre aléatoire
+    let NombreAleatoire:number = NbAleatoire()
+    AffichageQuestion(question, NombreAleatoire)
+    for(let i:number=0; i < 4; i++){
+        reponse = document.getElementById("reponse" + i)
+        AffichageReponse(reponse, NombreAleatoire, i)
+    }
+
+        
 }
 
-// Affiche aléatoirement la première question
-AffichageAleatoire()

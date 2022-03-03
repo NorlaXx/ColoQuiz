@@ -142,13 +142,13 @@
       this[globalName] = mainExports;
     }
   }
-})({"kfCRw":[function(require,module,exports) {
+})({"6xIxg":[function(require,module,exports) {
 "use strict";
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d6ea1d42532a7575";
-module.bundle.HMR_BUNDLE_ID = "501ec5f62f7636e9";
+module.bundle.HMR_BUNDLE_ID = "dff2b4e9b4954985";
 function _toConsumableArray(arr) {
     return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
 }
@@ -518,118 +518,8 @@ function hmrAcceptRun(bundle, id) {
     acceptedAssets[id] = true;
 }
 
-},{}],"UDmWr":[function(require,module,exports) {
-"use strict";
-var __importDefault = this && this.__importDefault || function(mod) {
-    return mod && mod.__esModule ? mod : {
-        "default": mod
-    };
-};
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-const questions_json_1 = __importDefault(require("./questions.json"));
-// Variable pour le score définie à 0
-var score = 0;
-// Nombre de questions de chaque thèmes
-var NbQuestionsFilms = questions_json_1.default.Films.length;
-console.log(NbQuestionsFilms);
-var NbQuestionsNature = questions_json_1.default.Nature.length;
-var NbQuestionsJeux = questions_json_1.default.JeuxVidéos.length;
-// Variable du score définit à 0
-var score = 0;
-// Le nombre aléatoire mit dans une variable
-var NombreAleatoire = NbAleatoire();
-// Ajout des questions dans un tableau et des réponses dans un tableau
-var QuestionsFilms = [];
-var Reponses = [];
-var GoodAwnser = [];
-// Ajout de tableaux dans le tableaux Reponses
-for(let i = 0; i < NbQuestionsFilms; i++)Reponses.push([]);
-// Ajout des questions et de la bonne réponse
-for(let i1 = 0; i1 < NbQuestionsFilms; i1++){
-    QuestionsFilms.push(questions_json_1.default.Films[i1].Question);
-    GoodAwnser.push(questions_json_1.default.Films[i1].GoodAwnser);
-}
-// Ajout des reponses
-for(let i2 = 0; i2 < NbQuestionsFilms; i2++)for(let j = 0; j < 4; j++)Reponses[i2].push(questions_json_1.default.Films[i2].Reponses[j]);
-console.log("les questions sont" + QuestionsFilms);
-console.log(Reponses);
-let Quiz = document.getElementById("Quiz");
-// Création du quiz HTML
-// Création de la variable de la question
-let question = document.createElement("div");
-question.id = "Question";
-// Création des variables de la question et des réponses
-Quiz.appendChild(question);
-AffichageQuestion(question, NombreAleatoire);
-for(let i3 = 0; i3 < 4; i3++){
-    var reponse = document.createElement("div");
-    reponse.classList.add("reponse");
-    reponse.value = AffichageReponse(reponse, NombreAleatoire, i3);
-    reponse.id = "reponse" + i3; // output ==> reponse0 ou reponse1 ou reponse2 ou reponse3
-    Quiz.appendChild(reponse);
-    AffichageReponse(reponse, NombreAleatoire, i3);
-    reponse.addEventListener("click", function(event) {
-        if (Reponses[NombreAleatoire][i3] == GoodAwnser[NombreAleatoire]) reponse.classList.add("GoodAnswer");
-        else reponse.classList.add("BadAnswer");
-    });
-}
-// Création du bouton de validation
-const submit = document.createElement("button");
-submit.id = "submit";
-submit.innerHTML = "validé";
-Quiz.appendChild(submit);
-// Fonction générant un nombre aléatoire
-function NbAleatoire() {
-    if (NbQuestionsFilms > 0) var NbAleatoire1 = Math.floor(Math.random() * NbQuestionsFilms);
-    else NbAleatoire1 = -1;
-    return NbAleatoire1;
-}
-// Affichage des Questions
-function AffichageQuestion(question1, NombreAleatoire1) {
-    if (NombreAleatoire1 >= 0) question1.innerHTML = QuestionsFilms[NombreAleatoire1];
-    else question1.innerHTML = "Il n'y a plus de question";
-}
-// Affichage des Réponses
-function AffichageReponse(reponse, NombreAleatoire2, index) {
-    console.log(NombreAleatoire2);
-    if (NombreAleatoire2 >= 0) reponse.innerHTML = Reponses[NombreAleatoire2][index];
-    else reponse.innerHTML = "Il n'y a plus de reponses";
-// Suppression de la Quesiton apparue ainsi que des réponses
-// Décrémenter NbAleatoire de 1 car Une question a été supprimée
-}
-// Fonctioon supprimant la question qui est apparue
-function DelQuestion() {
-    QuestionsFilms.splice(NombreAleatoire, 1);
-    Reponses.splice(NombreAleatoire, 1);
-    NbQuestionsFilms -= 1;
-    console.log(QuestionsFilms);
-}
-// Fonction du score
-// function Score(valeur:any) {
-//     if(questions.Films[AffichageAleatoire()] == valeur) {
-//         alert("bravo")
-//     } else{
-//         alert("Faux")
-//     }
-// }
-// Active la fonction AffichageAleatoire() et la fonction ArrayEmpty() lors du click sur le bouton Valider
-submit.onclick = function() {
-    // Appelle la fonction supprimant la question déjà apparue
-    DelQuestion();
-    // Redéfini les nombre aléatoire
-    let NombreAleatoire3 = NbAleatoire();
-    AffichageQuestion(question, NombreAleatoire3);
-    for(let i4 = 0; i4 < 4; i4++){
-        reponse = document.getElementById("reponse" + i4);
-        AffichageReponse(reponse, NombreAleatoire3, i4);
-    }
-};
+},{}],"culM0":[function(require,module,exports) {
 
-},{"./questions.json":"4WqBB"}],"4WqBB":[function(require,module,exports) {
-module.exports = JSON.parse("{\"Nature\":[{\"Question\":\"Quel animal a dees rayures noires\",\"Reponses\":[\"Chien\",\"Zèbre\",\"Châmeau\",\"Souris\"],\"GoodAwnser\":\"Zèbre\"},{\"Question\":\"Où vit le Panda ?\",\"Reponses\":[\"France\",\"Japon\",\"Chine\",\"Australie\"],\"GoodAwnser\":\"Chine\"}],\"JeuxVidéos\":[{\"Question\":\"Quand a été créé Minecraft ?\",\"Reponses\":[2009,2008,2007,2010],\"GoodAwnser\":2009},{\"Question\":\"Comment s'appelle le frère de Mario ?\",\"Reponses\":[\"Luigi\",\"Bowser\",\"Wario\",\"Waluigi\"],\"GoodAwnser\":\"Luigi\"}],\"Films\":[{\"Question\":\"De quelle couleur est Shrek ?\",\"Reponses\":[\"Vert\",\"Rouge\",\"Jaune\",\"Bleu\"],\"GoodAwnser\":\"Vert\"},{\"Question\":\"Quel type de véhicule est Martin dans Cars ?\",\"Reponses\":[\"Course\",\"Dépanneuse\",\"Tank\",\"Scooter\"],\"GoodAwnser\":\"Dépanneuse\"}]}");
+},{}]},["6xIxg","culM0"], "culM0", "parcelRequirecd43")
 
-},{}]},["kfCRw","UDmWr"], "UDmWr", "parcelRequirecd43")
-
-//# sourceMappingURL=Ado_Film.2f7636e9.js.map
+//# sourceMappingURL=Ado_Jeu.b4954985.js.map
