@@ -134,11 +134,21 @@ img {
 	background-color: #2db374;
 }
 
+/* Bonne et mauvaise réponse */
+
 .GoodAnswer {
 	background-color: #0d7c03;
 }
 
 .BadAnswer {
 	background-color: rgb(255, 0, 0);
+}
+
+/* Fin du quiz */
+
+.FinQuiz{
+	background-color: aqua;
+	padding: 5px;
+	text-align: center;
 }
 /*# sourceMappingURL=Ado_Film.904ae7b3.css.map */

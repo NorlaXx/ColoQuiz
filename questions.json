@@ -36,6 +36,11 @@
             "Question" : "Quel type de véhicule est Martin dans Cars ?",
             "Reponses" : ["Course", "Dépanneuse", "Tank", "Scooter"],
             "GoodAwnser" : "Dépanneuse"
+        },
+        {
+            "Question" : "Comment s'appellent les personnages jaune dans 'Moi moche et méchant' ? ",
+            "Reponses" : ["Les minions", "Les jaunes", "Les aliens", "Les goules"],
+            "GoodAwnser" : "Les minions"
         }
     ]
 }

@@ -142,7 +142,7 @@
       this[globalName] = mainExports;
     }
   }
-})({"kfCRw":[function(require,module,exports) {
+})({"5UWa2":[function(require,module,exports) {
 "use strict";
 var HMR_HOST = null;
 var HMR_PORT = null;
@@ -530,16 +530,16 @@ Object.defineProperty(exports, "__esModule", {
 });
 const questions_json_1 = __importDefault(require("./questions.json"));
 // Variable pour le score définie à 0
-var score = 0;
+let score = 0;
+// Div HTML contenant le score
+let Score = document.createElement("div");
 // Nombre de questions de chaque thèmes
 var NbQuestionsFilms = questions_json_1.default.Films.length;
 console.log(NbQuestionsFilms);
 var NbQuestionsNature = questions_json_1.default.Nature.length;
 var NbQuestionsJeux = questions_json_1.default.JeuxVidéos.length;
-// Variable du score définit à 0
-var score = 0;
 // Le nombre aléatoire mit dans une variable
-var NombreAleatoire = NbAleatoire();
+let NombreAleatoire = NbAleatoire();
 // Ajout des questions dans un tableau et des réponses dans un tableau
 var QuestionsFilms = [];
 var Reponses = [];
@@ -563,18 +563,24 @@ question.id = "Question";
 // Création des variables de la question et des réponses
 Quiz.appendChild(question);
 AffichageQuestion(question, NombreAleatoire);
-for(let i3 = 0; i3 < 4; i3++){
-    var reponse = document.createElement("div");
-    reponse.classList.add("reponse");
-    reponse.value = AffichageReponse(reponse, NombreAleatoire, i3);
-    reponse.id = "reponse" + i3; // output ==> reponse0 ou reponse1 ou reponse2 ou reponse3
-    Quiz.appendChild(reponse);
-    AffichageReponse(reponse, NombreAleatoire, i3);
-    reponse.addEventListener("click", function(event) {
-        if (Reponses[NombreAleatoire][i3] == GoodAwnser[NombreAleatoire]) reponse.classList.add("GoodAnswer");
-        else reponse.classList.add("BadAnswer");
-    });
+function CreateQuiz() {
+    for(let i3 = 0; i3 < 4; i3++){
+        var reponse1 = document.createElement("div");
+        reponse1.classList.add("reponse");
+        reponse1.value = AffichageReponse(reponse1, NombreAleatoire, i3);
+        reponse1.id = "reponse" + i3; // output ==> reponse0 ou reponse1 ou reponse2 ou reponse3
+        Quiz.appendChild(reponse1);
+        AffichageReponse(reponse1, NombreAleatoire, i3);
+        reponse1.addEventListener("click", function(event) {
+            if (Reponses[NombreAleatoire][i3] == GoodAwnser[NombreAleatoire]) {
+                reponse1.classList.add("GoodAnswer");
+                Scores();
+            } else reponse1.classList.add("BadAnswer");
+        });
+    }
+    return reponse1;
 }
+let reponse = CreateQuiz();
 // Création du bouton de validation
 const submit = document.createElement("button");
 submit.id = "submit";
@@ -586,18 +592,24 @@ function NbAleatoire() {
     else NbAleatoire1 = -1;
     return NbAleatoire1;
 }
+// Affichage du score
+Quiz.appendChild(Score);
+Score.classList.add("Score");
+Score.innerHTML = score + " / " + questions_json_1.default.Films.length;
 // Affichage des Questions
 function AffichageQuestion(question1, NombreAleatoire1) {
     if (NombreAleatoire1 >= 0) question1.innerHTML = QuestionsFilms[NombreAleatoire1];
-    else question1.innerHTML = "Il n'y a plus de question";
+    else {
+        Quiz.removeChild(question1);
+        Quiz.removeChild(submit);
+        finQuiz();
+    }
 }
 // Affichage des Réponses
-function AffichageReponse(reponse, NombreAleatoire2, index) {
+function AffichageReponse(reponse2, NombreAleatoire2, index) {
     console.log(NombreAleatoire2);
-    if (NombreAleatoire2 >= 0) reponse.innerHTML = Reponses[NombreAleatoire2][index];
-    else reponse.innerHTML = "Il n'y a plus de reponses";
-// Suppression de la Quesiton apparue ainsi que des réponses
-// Décrémenter NbAleatoire de 1 car Une question a été supprimée
+    if (NombreAleatoire2 >= 0) reponse2.innerHTML = Reponses[NombreAleatoire2][index];
+    else Quiz.removeChild(reponse2);
 }
 // Fonctioon supprimant la question qui est apparue
 function DelQuestion() {
@@ -605,15 +617,20 @@ function DelQuestion() {
     Reponses.splice(NombreAleatoire, 1);
     NbQuestionsFilms -= 1;
     console.log(QuestionsFilms);
+    GoodAwnser.splice(NombreAleatoire, 1);
 }
 // Fonction du score
-// function Score(valeur:any) {
-//     if(questions.Films[AffichageAleatoire()] == valeur) {
-//         alert("bravo")
-//     } else{
-//         alert("Faux")
-//     }
-// }
+function Scores() {
+    score += 1;
+    Score.innerHTML = score + " / " + questions_json_1.default.Films.length;
+}
+// Création de l'interface de fin du quiz
+function finQuiz() {
+    var fin = document.createElement("div");
+    Quiz.appendChild(fin);
+    fin.innerHTML = "C'est la fin du Quiz";
+    fin.classList.add("FinQuiz");
+}
 // Active la fonction AffichageAleatoire() et la fonction ArrayEmpty() lors du click sur le bouton Valider
 submit.onclick = function() {
     // Appelle la fonction supprimant la question déjà apparue
@@ -625,11 +642,14 @@ submit.onclick = function() {
         reponse = document.getElementById("reponse" + i4);
         AffichageReponse(reponse, NombreAleatoire3, i4);
     }
+    // Supprime les class "GoodAnswer" et  "BadAnswer" qui ajoutent un fond à la réponse cliquée
+    reponse.classList.remove("GoodAnswer");
+    reponse.classList.remove("BadAnswer");
 };
 
 },{"./questions.json":"4WqBB"}],"4WqBB":[function(require,module,exports) {
-module.exports = JSON.parse("{\"Nature\":[{\"Question\":\"Quel animal a dees rayures noires\",\"Reponses\":[\"Chien\",\"Zèbre\",\"Châmeau\",\"Souris\"],\"GoodAwnser\":\"Zèbre\"},{\"Question\":\"Où vit le Panda ?\",\"Reponses\":[\"France\",\"Japon\",\"Chine\",\"Australie\"],\"GoodAwnser\":\"Chine\"}],\"JeuxVidéos\":[{\"Question\":\"Quand a été créé Minecraft ?\",\"Reponses\":[2009,2008,2007,2010],\"GoodAwnser\":2009},{\"Question\":\"Comment s'appelle le frère de Mario ?\",\"Reponses\":[\"Luigi\",\"Bowser\",\"Wario\",\"Waluigi\"],\"GoodAwnser\":\"Luigi\"}],\"Films\":[{\"Question\":\"De quelle couleur est Shrek ?\",\"Reponses\":[\"Vert\",\"Rouge\",\"Jaune\",\"Bleu\"],\"GoodAwnser\":\"Vert\"},{\"Question\":\"Quel type de véhicule est Martin dans Cars ?\",\"Reponses\":[\"Course\",\"Dépanneuse\",\"Tank\",\"Scooter\"],\"GoodAwnser\":\"Dépanneuse\"}]}");
+module.exports = JSON.parse("{\"Nature\":[{\"Question\":\"Quel animal a dees rayures noires\",\"Reponses\":[\"Chien\",\"Zèbre\",\"Châmeau\",\"Souris\"],\"GoodAwnser\":\"Zèbre\"},{\"Question\":\"Où vit le Panda ?\",\"Reponses\":[\"France\",\"Japon\",\"Chine\",\"Australie\"],\"GoodAwnser\":\"Chine\"}],\"JeuxVidéos\":[{\"Question\":\"Quand a été créé Minecraft ?\",\"Reponses\":[2009,2008,2007,2010],\"GoodAwnser\":2009},{\"Question\":\"Comment s'appelle le frère de Mario ?\",\"Reponses\":[\"Luigi\",\"Bowser\",\"Wario\",\"Waluigi\"],\"GoodAwnser\":\"Luigi\"}],\"Films\":[{\"Question\":\"De quelle couleur est Shrek ?\",\"Reponses\":[\"Vert\",\"Rouge\",\"Jaune\",\"Bleu\"],\"GoodAwnser\":\"Vert\"},{\"Question\":\"Quel type de véhicule est Martin dans Cars ?\",\"Reponses\":[\"Course\",\"Dépanneuse\",\"Tank\",\"Scooter\"],\"GoodAwnser\":\"Dépanneuse\"},{\"Question\":\"Comment s'appellent les personnages jaune dans 'Moi moche et méchant' ? \",\"Reponses\":[\"Les minions\",\"Les jaunes\",\"Les aliens\",\"Les goules\"],\"GoodAwnser\":\"Les minions\"}]}");
 
-},{}]},["kfCRw","UDmWr"], "UDmWr", "parcelRequirecd43")
+},{}]},["5UWa2","UDmWr"], "UDmWr", "parcelRequirecd43")
 
 //# sourceMappingURL=Ado_Film.2f7636e9.js.map
