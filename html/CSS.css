@@ -1,5 +1,5 @@
-body {
-	background: url(fond.jpg) no-repeat center fixed;
+body{
+	background: url(Fond2.png) no-repeat center fixed;
 	background-size: cover;
 }
 
@@ -121,30 +121,89 @@ img {
   text-align: center;
 }
 
+/* Le Quiz */
+#Quiz{
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	margin-right: 20%;
+	margin-left: 20%;
+	margin-top: 3%;
+	padding: 30px;
+	border-radius: 20px;
+	background-color: rgb(124, 48, 195);
+}
+
 /* Les boutons des différentes réponses */
 #Question{
 	padding: 20px;
-	background-color: #2db374;
+	background-color: #4525d4;
+	margin-bottom: 20px;
+	border-radius: 10px;
+	text-align: center;
 }
 
 .reponse{
 	margin-top: 10px;
 	padding: 20px;
-	background-color: #2db374;
+	background-color: #2874cc;
+	border-radius: 10px;
+	text-align: center;
+}
+
+.reponse:hover{
+	background-color: rgb(8, 109, 177);
+	cursor: pointer;
 }
 
 /* Bonne et mauvaise réponse */
-.GoodAnswer {
-	background-color: #0d7c03;
+.GoodFeedBack {
+	color: #2db374;
+	font-size: 20px;
+	margin-top: 10px;
+	text-align: center;
 }
 
-.BadAnswer {
-	background-color: rgb(255, 0, 0);
+.BadFeedBack {
+	color: red;
+	font-size: 20px;
+	margin-top: 10px;
+	text-align: center;
 }
 
 /* Fin du quiz */
 .FinQuiz{
-	background-color: aqua;
-	padding: 5px;
+	background-color: #4b33b8;
+	padding: 70px;
+	border-radius: 10px;
+	margin-top: 5%;
+	margin-bottom: 5%;
 	text-align: center;
+}
+
+/* Bouton retour */
+.retour{
+	text-align: center;
+}
+
+/* Bouton validé */
+#submit{
+	padding: 10px;
+	margin-top: 20px;
+	font-size: 25px;
+	background-color: #4525d4;
+	border-radius: 10px;
+}
+
+#submit:hover{
+	background-color: #0670e9;
+	cursor: pointer;
+}
+
+/* Score */
+.Score{
+	position: absolute;
+	top: 0;
+	right: 20px;
+	font-size: 30px;
 }

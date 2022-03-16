@@ -2,6 +2,8 @@ import { convertToObject } from "typescript"
 import questions from "./questions.json"
 
 
+// Variable définissant si une questions a été répondue ou non
+let clicked:boolean = false
 // Variable pour le score définie à 0
 let score:number = 0
 // Div HTML contenant le score
@@ -50,6 +52,14 @@ question.id = "Question"
 // Création des variables de la question et des réponses
 Quiz.appendChild(question)
 
+let GoodFeedBack = document.createElement("div")
+GoodFeedBack.classList.add("GoodFeedBack")
+GoodFeedBack.innerHTML = "Bravo, tu as trouvé la bonne réponse !"
+
+let BadFeedBack = document.createElement("div")
+BadFeedBack.classList.add("BadFeedBack")
+BadFeedBack.innerHTML = "Dommage, c'est la mauvaise réponse !"
+
 AffichageQuestion(question, NombreAleatoire)
 function CreateQuiz() {
     for(let i:number = 0; i < 4; i++){  // Magic number à effacer pour l'itération 4
@@ -61,18 +71,21 @@ function CreateQuiz() {
         Quiz.appendChild(reponse)
             
         AffichageReponse(reponse, NombreAleatoire, i)
-            
-        reponse.addEventListener("click", function(event:any){
-        
-            if(Reponses[NombreAleatoire][i] == GoodAwnser[NombreAleatoire]) {
-                reponse.classList.add("GoodAnswer")
-                Scores()
-            }else{
-                reponse.classList.add("BadAnswer")
-            }
-        
-        })
 
+            reponse.addEventListener("click", function(){
+                if(clicked == false){
+                    if(Reponses[NombreAleatoire][i] == GoodAwnser[NombreAleatoire]) {
+                    
+                        Quiz.appendChild(GoodFeedBack)
+                        Scores()
+                    }else{
+                        Quiz.appendChild(BadFeedBack)
+                    }
+                    clicked = true
+                }
+                
+            })
+        
     }
     return reponse
 }
@@ -150,25 +163,39 @@ function Scores() {
 
 // Création de l'interface de fin du quiz
 function finQuiz() {
-    var fin = document.createElement("div")
+    let fin:HTMLElement = document.createElement("div")
     Quiz.appendChild(fin)
     fin.innerHTML = "C'est la fin du Quiz"
     fin.classList.add("FinQuiz")
+    let retour:any = document.createElement("a")
+    Quiz.appendChild(retour)
+    retour.innerHTML = "<- Retour"
+    retour.href = "/localhost:1234"
+
 }
 
 // Active la fonction AffichageAleatoire() et la fonction ArrayEmpty() lors du click sur le bouton Valider
 submit.onclick = function() {
+    if(clicked == false){
+        alert("Veuillez choisir une réponse")
+    }else {
+        // Redéfinission de la vérification si une question a été répondue ou non
+    clicked = false
     // Appelle la fonction supprimant la question déjà apparue
     DelQuestion()
     // Redéfini les nombre aléatoire
     let NombreAleatoire:number = NbAleatoire()
     AffichageQuestion(question, NombreAleatoire)
     for(let i:number=0; i < 4; i++){
-        reponse = document.getElementById("reponse" + i)
+        let reponse = document.getElementById("reponse" + i)
         AffichageReponse(reponse, NombreAleatoire, i)
     }
     // Supprime les class "GoodAnswer" et  "BadAnswer" qui ajoutent un fond à la réponse cliquée
-    reponse.classList.remove("GoodAnswer")
-    reponse.classList.remove("BadAnswer")
+    if(Quiz.contains(GoodFeedBack)){
+        Quiz.removeChild(GoodFeedBack)
+    }else{
+        Quiz.removeChild(BadFeedBack)
+    }
+    }
     
 }

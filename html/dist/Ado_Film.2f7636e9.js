@@ -142,7 +142,7 @@
       this[globalName] = mainExports;
     }
   }
-})({"5UWa2":[function(require,module,exports) {
+})({"4MA0e":[function(require,module,exports) {
 "use strict";
 var HMR_HOST = null;
 var HMR_PORT = null;
@@ -529,6 +529,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 const questions_json_1 = __importDefault(require("./questions.json"));
+// Variable définissant si une questions a été répondue ou non
+let clicked = false;
 // Variable pour le score définie à 0
 let score = 0;
 // Div HTML contenant le score
@@ -562,6 +564,12 @@ let question = document.createElement("div");
 question.id = "Question";
 // Création des variables de la question et des réponses
 Quiz.appendChild(question);
+let GoodFeedBack = document.createElement("div");
+GoodFeedBack.classList.add("GoodFeedBack");
+GoodFeedBack.innerHTML = "Bravo, tu as trouvé la bonne réponse !";
+let BadFeedBack = document.createElement("div");
+BadFeedBack.classList.add("BadFeedBack");
+BadFeedBack.innerHTML = "Dommage, c'est la mauvaise réponse !";
 AffichageQuestion(question, NombreAleatoire);
 function CreateQuiz() {
     for(let i3 = 0; i3 < 4; i3++){
@@ -571,11 +579,14 @@ function CreateQuiz() {
         reponse1.id = "reponse" + i3; // output ==> reponse0 ou reponse1 ou reponse2 ou reponse3
         Quiz.appendChild(reponse1);
         AffichageReponse(reponse1, NombreAleatoire, i3);
-        reponse1.addEventListener("click", function(event) {
-            if (Reponses[NombreAleatoire][i3] == GoodAwnser[NombreAleatoire]) {
-                reponse1.classList.add("GoodAnswer");
-                Scores();
-            } else reponse1.classList.add("BadAnswer");
+        reponse1.addEventListener("click", function() {
+            if (clicked == false) {
+                if (Reponses[NombreAleatoire][i3] == GoodAwnser[NombreAleatoire]) {
+                    Quiz.appendChild(GoodFeedBack);
+                    Scores();
+                } else Quiz.appendChild(BadFeedBack);
+                clicked = true;
+            }
         });
     }
     return reponse1;
@@ -626,30 +637,39 @@ function Scores() {
 }
 // Création de l'interface de fin du quiz
 function finQuiz() {
-    var fin = document.createElement("div");
+    let fin = document.createElement("div");
     Quiz.appendChild(fin);
     fin.innerHTML = "C'est la fin du Quiz";
     fin.classList.add("FinQuiz");
+    let retour = document.createElement("a");
+    Quiz.appendChild(retour);
+    retour.innerHTML = "<- Retour";
+    retour.href = "/localhost:1234";
 }
 // Active la fonction AffichageAleatoire() et la fonction ArrayEmpty() lors du click sur le bouton Valider
 submit.onclick = function() {
-    // Appelle la fonction supprimant la question déjà apparue
-    DelQuestion();
-    // Redéfini les nombre aléatoire
-    let NombreAleatoire3 = NbAleatoire();
-    AffichageQuestion(question, NombreAleatoire3);
-    for(let i4 = 0; i4 < 4; i4++){
-        reponse = document.getElementById("reponse" + i4);
-        AffichageReponse(reponse, NombreAleatoire3, i4);
+    if (clicked == false) alert("Veuillez choisir une réponse");
+    else {
+        // Redéfinission de la vérification si une question a été répondue ou non
+        clicked = false;
+        // Appelle la fonction supprimant la question déjà apparue
+        DelQuestion();
+        // Redéfini les nombre aléatoire
+        let NombreAleatoire3 = NbAleatoire();
+        AffichageQuestion(question, NombreAleatoire3);
+        for(let i4 = 0; i4 < 4; i4++){
+            let reponse3 = document.getElementById("reponse" + i4);
+            AffichageReponse(reponse3, NombreAleatoire3, i4);
+        }
+        // Supprime les class "GoodAnswer" et  "BadAnswer" qui ajoutent un fond à la réponse cliquée
+        if (Quiz.contains(GoodFeedBack)) Quiz.removeChild(GoodFeedBack);
+        else Quiz.removeChild(BadFeedBack);
     }
-    // Supprime les class "GoodAnswer" et  "BadAnswer" qui ajoutent un fond à la réponse cliquée
-    reponse.classList.remove("GoodAnswer");
-    reponse.classList.remove("BadAnswer");
 };
 
 },{"./questions.json":"4WqBB"}],"4WqBB":[function(require,module,exports) {
 module.exports = JSON.parse("{\"Nature\":[{\"Question\":\"Quel animal a dees rayures noires\",\"Reponses\":[\"Chien\",\"Zèbre\",\"Châmeau\",\"Souris\"],\"GoodAwnser\":\"Zèbre\"},{\"Question\":\"Où vit le Panda ?\",\"Reponses\":[\"France\",\"Japon\",\"Chine\",\"Australie\"],\"GoodAwnser\":\"Chine\"}],\"JeuxVidéos\":[{\"Question\":\"Quand a été créé Minecraft ?\",\"Reponses\":[2009,2008,2007,2010],\"GoodAwnser\":2009},{\"Question\":\"Comment s'appelle le frère de Mario ?\",\"Reponses\":[\"Luigi\",\"Bowser\",\"Wario\",\"Waluigi\"],\"GoodAwnser\":\"Luigi\"}],\"Films\":[{\"Question\":\"De quelle couleur est Shrek ?\",\"Reponses\":[\"Vert\",\"Rouge\",\"Jaune\",\"Bleu\"],\"GoodAwnser\":\"Vert\"},{\"Question\":\"Quel type de véhicule est Martin dans Cars ?\",\"Reponses\":[\"Course\",\"Dépanneuse\",\"Tank\",\"Scooter\"],\"GoodAwnser\":\"Dépanneuse\"},{\"Question\":\"Comment s'appellent les personnages jaune dans 'Moi moche et méchant' ? \",\"Reponses\":[\"Les minions\",\"Les jaunes\",\"Les aliens\",\"Les goules\"],\"GoodAwnser\":\"Les minions\"}]}");
 
-},{}]},["5UWa2","UDmWr"], "UDmWr", "parcelRequirecd43")
+},{}]},["4MA0e","UDmWr"], "UDmWr", "parcelRequirecd43")
 
 //# sourceMappingURL=Ado_Film.2f7636e9.js.map

@@ -4,6 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const questions_json_1 = __importDefault(require("./questions.json"));
+// Variable définissant si une questions a été répondue ou non
+let clicked = false;
 // Variable pour le score définie à 0
 let score = 0;
 // Div HTML contenant le score
@@ -43,6 +45,12 @@ let question = document.createElement("div");
 question.id = "Question";
 // Création des variables de la question et des réponses
 Quiz.appendChild(question);
+let GoodFeedBack = document.createElement("div");
+GoodFeedBack.classList.add("GoodFeedBack");
+GoodFeedBack.innerHTML = "Bravo, tu as trouvé la bonne réponse !";
+let BadFeedBack = document.createElement("div");
+BadFeedBack.classList.add("BadFeedBack");
+BadFeedBack.innerHTML = "Dommage, c'est la mauvaise réponse !";
 AffichageQuestion(question, NombreAleatoire);
 function CreateQuiz() {
     for (let i = 0; i < 4; i++) { // Magic number à effacer pour l'itération 4
@@ -52,13 +60,16 @@ function CreateQuiz() {
         reponse.id = "reponse" + i; // output ==> reponse0 ou reponse1 ou reponse2 ou reponse3
         Quiz.appendChild(reponse);
         AffichageReponse(reponse, NombreAleatoire, i);
-        reponse.addEventListener("click", function (event) {
-            if (Reponses[NombreAleatoire][i] == GoodAwnser[NombreAleatoire]) {
-                reponse.classList.add("GoodAnswer");
-                Scores();
-            }
-            else {
-                reponse.classList.add("BadAnswer");
+        reponse.addEventListener("click", function () {
+            if (clicked == false) {
+                if (Reponses[NombreAleatoire][i] == GoodAwnser[NombreAleatoire]) {
+                    Quiz.appendChild(GoodFeedBack);
+                    Scores();
+                }
+                else {
+                    Quiz.appendChild(BadFeedBack);
+                }
+                clicked = true;
             }
         });
     }
@@ -121,23 +132,38 @@ function Scores() {
 }
 // Création de l'interface de fin du quiz
 function finQuiz() {
-    var fin = document.createElement("div");
+    let fin = document.createElement("div");
     Quiz.appendChild(fin);
     fin.innerHTML = "C'est la fin du Quiz";
     fin.classList.add("FinQuiz");
+    let retour = document.createElement("a");
+    Quiz.appendChild(retour);
+    retour.innerHTML = "<- Retour";
+    retour.href = "/localhost:1234";
 }
 // Active la fonction AffichageAleatoire() et la fonction ArrayEmpty() lors du click sur le bouton Valider
 submit.onclick = function () {
-    // Appelle la fonction supprimant la question déjà apparue
-    DelQuestion();
-    // Redéfini les nombre aléatoire
-    let NombreAleatoire = NbAleatoire();
-    AffichageQuestion(question, NombreAleatoire);
-    for (let i = 0; i < 4; i++) {
-        reponse = document.getElementById("reponse" + i);
-        AffichageReponse(reponse, NombreAleatoire, i);
+    if (clicked == false) {
+        alert("Veuillez choisir une réponse");
     }
-    // Supprime les class "GoodAnswer" et  "BadAnswer" qui ajoutent un fond à la réponse cliquée
-    reponse.classList.remove("GoodAnswer");
-    reponse.classList.remove("BadAnswer");
+    else {
+        // Redéfinission de la vérification si une question a été répondue ou non
+        clicked = false;
+        // Appelle la fonction supprimant la question déjà apparue
+        DelQuestion();
+        // Redéfini les nombre aléatoire
+        let NombreAleatoire = NbAleatoire();
+        AffichageQuestion(question, NombreAleatoire);
+        for (let i = 0; i < 4; i++) {
+            let reponse = document.getElementById("reponse" + i);
+            AffichageReponse(reponse, NombreAleatoire, i);
+        }
+        // Supprime les class "GoodAnswer" et  "BadAnswer" qui ajoutent un fond à la réponse cliquée
+        if (Quiz.contains(GoodFeedBack)) {
+            Quiz.removeChild(GoodFeedBack);
+        }
+        else {
+            Quiz.removeChild(BadFeedBack);
+        }
+    }
 };
