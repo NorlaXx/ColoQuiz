@@ -142,7 +142,7 @@
       this[globalName] = mainExports;
     }
   }
-})({"gt7th":[function(require,module,exports) {
+})({"gG6lx":[function(require,module,exports) {
 "use strict";
 var HMR_HOST = null;
 var HMR_PORT = null;
@@ -962,6 +962,6 @@ Jeux.addEventListener("click", function() {
 },{"./questions.json":"4WqBB"}],"4WqBB":[function(require,module,exports) {
 module.exports = JSON.parse("{\"Nature\":[{\"Question\":\"Quel animal a dees rayures noires\",\"Reponses\":[\"Chien\",\"Zèbre\",\"Châmeau\",\"Souris\"],\"GoodAwnser\":\"Zèbre\"},{\"Question\":\"Où vit le Panda ?\",\"Reponses\":[\"France\",\"Japon\",\"Chine\",\"Australie\"],\"GoodAwnser\":\"Chine\"}],\"JeuxVidéos\":[{\"Question\":\"Quand a été créé Minecraft ?\",\"Reponses\":[2009,2008,2007,2010],\"GoodAwnser\":2009},{\"Question\":\"Comment s'appelle le frère de Mario ?\",\"Reponses\":[\"Luigi\",\"Bowser\",\"Wario\",\"Waluigi\"],\"GoodAwnser\":\"Luigi\"}],\"Films\":[{\"Question\":\"De quelle couleur est Shrek ?\",\"Reponses\":[\"Vert\",\"Rouge\",\"Jaune\",\"Bleu\"],\"GoodAwnser\":\"Vert\"},{\"Question\":\"Quel type de véhicule est Martin dans Cars ?\",\"Reponses\":[\"Course\",\"Dépanneuse\",\"Tank\",\"Scooter\"],\"GoodAwnser\":\"Dépanneuse\"},{\"Question\":\"Comment s'appellent les personnages jaune dans 'Moi moche et méchant' ? \",\"Reponses\":[\"Les minions\",\"Les jaunes\",\"Les aliens\",\"Les goules\"],\"GoodAwnser\":\"Les minions\"}]}");
 
-},{}]},["gt7th","UDmWr"], "UDmWr", "parcelRequirecd43")
+},{}]},["gG6lx","UDmWr"], "UDmWr", "parcelRequirecd43")
 
-//# sourceMappingURL=Ado_Film.2f7636e9.js.map
+//# sourceMappingURL=Quiz.2f7636e9.js.map

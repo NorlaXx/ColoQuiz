@@ -3,98 +3,6 @@ body{
 	background-size: cover;
 }
 
-.site {
-	background-color: rgba(1, 1, 1, 0.5);
-	margin-left: 500px;
-	margin-right: 500px;
-
-}
-
-img {
-	border-radius: 40px;
-}
-
-.liens a{
-	text-decoration: none;
-}
-
-.liens2 a{
-	text-decoration: none;
-}
-
-/*début du programme pour glissière d'image*/
-
-/*définition des images*/
-
-@keyframes fondu{
-	0%{background-image: url("1.a2fb9176.jpg");}
-	33.33%{background-image: url("2.29120742.jpg");}
-	66.67%{background-image: url("3.b099ac1f.jpg");}
-	100%{background-image: url("1.a2fb9176.jpg");}
-}
-
-/*image cliquable*/
-
-.Nature {
-	position: relative;
-	text-align: center;
-	margin-right: 75px;
-}
-
-.JeuxVidéo {
-	position: relative;
-	text-align: center;
-}
-
-.Film{
-	position: relative;
-	text-align: center;
-	margin-top: 75px;
-}
-
-/*Texte des images*/
-
-.texte_centrer {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  font-size: 120px;
-}
-
-/*répartition des blocs*/
-
-.liens {
-  margin-top: 50px;
-  display: flex;
- align-items: center;
- justify-content: center;
-}
-
-.liens2 {
-	text-align: center;
-	align-items: center;
-	justify-content: center;
-}
-
-/*définirion du cadre à image*/
-
-.d1 {
-	width: 1000px;
-	height: 666px;
-	margin: 50px auto;
-	box-shadow: 0px 15px 10px -5px #777;
-	background-color: #EDEDED;
-	background-size: contain;
-	animation: fondu 7s ease-in-out infinite both; /*7s trop rapide, 8s trop lent :/ */
-}
-
-.conteneur {
-	max-width: 500px;
-	margin: 50px ;
-}
 
 .Thème{
 	text-align: center;
@@ -105,7 +13,9 @@ img {
 	border-radius: 10px;
 }
 
+
 /* Le Quiz */
+
 
 #Quiz{
 	display: flex;
@@ -119,7 +29,9 @@ img {
 	background-color: rgb(124, 48, 195);
 }
 
+
 /* Les boutons des différentes réponses */
+
 
 #Question{
 	padding: 20px;
@@ -129,6 +41,7 @@ img {
 	text-align: center;
 }
 
+
 .reponse{
 	margin-top: 10px;
 	padding: 20px;
@@ -137,12 +50,15 @@ img {
 	text-align: center;
 }
 
+
 .reponse:hover{
 	background-color: rgb(8, 109, 177);
 	cursor: pointer;
 }
 
+
 /* Bonne et mauvaise réponse */
+
 
 .GoodFeedBack {
 	color: #2db374;
@@ -151,6 +67,7 @@ img {
 	text-align: center;
 }
 
+
 .BadFeedBack {
 	color: red;
 	font-size: 20px;
@@ -158,7 +75,9 @@ img {
 	text-align: center;
 }
 
+
 /* Fin du quiz */
+
 
 .FinQuiz{
 	background-color: #4b33b8;
@@ -169,13 +88,17 @@ img {
 	text-align: center;
 }
 
+
 /* Bouton retour */
+
 
 .retour{
 	text-align: center;
 }
 
+
 /* Bouton validé */
+
 
 #submit{
 	padding: 10px;
@@ -185,12 +108,15 @@ img {
 	border-radius: 10px;
 }
 
+
 #submit:hover{
 	background-color: #0670e9;
 	cursor: pointer;
 }
 
+
 /* Score */
+
 
 .Score{
 	position: absolute;
@@ -198,4 +124,4 @@ img {
 	right: 20px;
 	font-size: 30px;
 }
-/*# sourceMappingURL=Ado_Film.904ae7b3.css.map */
+/*# sourceMappingURL=Quiz.904ae7b3.css.map */
