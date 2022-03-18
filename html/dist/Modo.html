@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="/Modo.ac838624.css">
+	<meta charset="utf-8">
+	<title>123 Cambrousse / modération</title>
+</head>
+<body>
+
+	<div class="site"> 
+		<div class="ModTitre"><h1><font face="sans-serif">Modération</font></h1></div>
+		
+		<div class="explications">
+			<p><font face="sans-serif">Bienvenue sur la page de modération. Cet endroit est réservé au personnel de la colo</font></p>
+	        <p><font face="sans-serif">Veuillez ci-dessous écrire vos questions en premier puis 4 réponses en indiquant laquelle est la bonne</font></p>
+		</div>
+
+        <div class="Modquestion">
+        	
+        	<form method="post" action="questions.json"> 
+        		<p>
+        			<label for="question">Votre question</label>
+        			<input type="text" name="question" placeholder="Quelle est la couleur du ciel ?"> <br>
+
+        			<input type="radio" name="réponses" value="Q1" id="Q1"><label for="Q1"><input type="text" name="Rep1" placeholder="Bleu"></label> <br>
+    		        <input type="radio" name="réponses" value="Q2" id="Q2"><label for="Q2"><input type="text" name="Rep2" placeholder="Rouge"></label> <br>
+    		        <input type="radio" name="réponses" value="Q3" id="Q3"><label for="Q3"><input type="text" name="Rep3" placeholder="Vert"></label> <br>
+    		        <input type="radio" name="réponses" value="Q4" id="Q4"><label for="Q4"><input type="text" name="Rep4" placeholder="Jaune"></label> <br>
+
+    		        <input type="submit" value="Envoyer la question">
+        		</p>
+        	</form>
+
+        </div>
+
+        
+
+	</div>
+
+    <div class="Retour">
+        	<a href="/Acceuil.html">Retour vers l'acceuil</a>
+    </div>
+    
+<script src="/Modo.f3a0dcf0.js"></script></body>
+</html>
